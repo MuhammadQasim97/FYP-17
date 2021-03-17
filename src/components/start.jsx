@@ -40,7 +40,7 @@ class Start extends Component {
           </Button>
         </div>
         <div className="row justify-content-center shadow pb-3 m-4 ">
-          <p className="display-4 ">Automated Learning and Evaluation System</p>
+          <p className="display-4 ">Automated Learning and System</p>
         </div>
       </React.Fragment>
     );
