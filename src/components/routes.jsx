@@ -7,6 +7,7 @@ import { Route } from 'react-router';
 import Top from './top';
 import SignUp from './register';
 import Nav from './nav';
+import course from './AddCourses';
 
 
 
