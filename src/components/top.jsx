@@ -4,18 +4,15 @@ import { Button, Container, TextField } from '@material-ui/core';
 import DataGridDemo from './data';
 import SimpleMenu from './menu';
 import { Link } from 'react-router-dom';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 
 class Top extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.setView = this.setView.bind(this);
-    this.setMainView = this.setMainView.bind(this);
-
-
-  }
+  
 
   state = {
     tags: ['Assignments', 'Courses', 'Help'],
@@ -26,15 +23,14 @@ class Top extends Component {
       height: "500px"
     },
     mainView: false,
-
+    course:[],
+    
 
 
   };
 
-  onChange(e) {
-    const key = e.target.getAttribute('name');
-    console.log(key);
-    this.setState({ [e.target.name]: e.target.value });
+  onChange=(e)=> {
+    console.log(e.target.value);
 
   }
 
@@ -55,9 +51,25 @@ class Top extends Component {
     }).then(response => this.setState({ data: response.data }))
       .catch(errors => console.log(errors))
 
+
+
+      axios({
+        method: 'get',
+        url: 'http://localhost:5000/get_courses',
+        config: { headers: { 'Content-Type': 'multipart/form-data' } }
+      }).then(response => {this.setState({ course: response.data.data }); console.log(this.state.course)})
+        .catch(errors => console.log(errors))
+
+      
+
   }
 
-  async handleSubmit(e) {
+
+  async componentDidMount()
+  {
+    console.log(this.state.course);
+  }
+ handleSubmit=async (e)=> {
     e.preventDefault();
 
 
@@ -102,13 +114,13 @@ class Top extends Component {
     // .catch(errors => console.log(errors))
   }
 
-  setView() {
+  setView=()=> {
     this.state.view == true ? this.setState({ view: false }) : this.setState({ view: true });
     this.componentWillMount();
 
   }
 
-  setMainView() {
+  setMainView=()=> {
     this.state.mainView == true ? this.setState({ mainView: false }) : this.setState({ mainView: true });
 
 
@@ -136,9 +148,30 @@ class Top extends Component {
                 <div className="form-group">
                   <TextField className="form-control" id="standard-basic" label="Enter Name" onChange={e => this.onChange(e)} name="name" />
                 </div>
-                <div className="form-group">
-                  <TextField className="form-control" id="standard-basic" label="Enter Course" onChange={e => this.onChange(e)} name="course" />
-                </div>
+                <div className="form-group my-3">
+                <InputLabel id="demo-controlled-open-select-label">Choose Course</InputLabel>
+                <Select
+                label="Choose Course"
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          className="col-md-4"
+          // open={open}
+          // onClose={handleClose}
+          // onOpen={handleOpen}
+          // value={age}
+          name="course"
+           onChange={e =>this.onChange(e)}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {this.state.course.map((obj) => 
+           <MenuItem key={obj[0]}  value={obj[0]}>{obj[1]}</MenuItem>
+          )}
+         
+        
+        </Select>
+                      </div>
 
 
                 <div className="form-group">
