@@ -8,6 +8,7 @@ import Top from './top';
 import SignUp from './register';
 import Nav from './nav';
 import course from './AddCourses';
+import AddCourses from './AddCourses';
 
 
 
@@ -21,5 +22,6 @@ export default (
     <Route path="/user" component={Top} />
     <Route path="/register" component={SignUp} />
     <Route path="/" component={Nav} />
+    <Route path="/" component={AddCourses}/>
   </Route>
 );
