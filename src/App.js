@@ -1,8 +1,10 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+//import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/pages/Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Courses from "./components/pages/Courses";
 import Products from "./components/pages/Products";
 //import SignUp from "./components/pages/SignUp";
@@ -15,6 +17,7 @@ import Top from "./components/top";
 import SignUp from "./components/register";
 import { NavigateBefore } from "@material-ui/icons";
 import Nav from "./components/nav";
+import SubmitCourses from "./components/AddCourses";
 
 function App() {
   return (

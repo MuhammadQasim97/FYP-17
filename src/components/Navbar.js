@@ -59,6 +59,15 @@ function Navbar() {
                 Assessments
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                to="/AddCourses"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Add Courses
+              </Link>
+            </li>
             <li>
               <Link
                 to="/sign-up"
