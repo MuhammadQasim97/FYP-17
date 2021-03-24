@@ -30,7 +30,7 @@ class Top extends Component {
   };
 
   onChange=(e)=> {
-    console.log(e.target.value);
+    this.setState({ [e.target.name]: e.target.value });
 
   }
 
@@ -84,11 +84,11 @@ class Top extends Component {
       headers: { 'content-type': 'multipart/form-data' }
     }
     let formData = new FormData();
-    formData.append('tar', this.state.tar);
+    //formData.append('tar', this.state.tar);
 
     formData.append('name', this.state.name);
-    formData.append('make', this.state.make);
-    formData.append('course', this.state.course);
+    formData.append('test_case', this.state.testCase);
+    formData.append('course', this.state.course_id);
     formData.append('deadline', this.state.deadline);
 
 
@@ -159,7 +159,7 @@ class Top extends Component {
           // onClose={handleClose}
           // onOpen={handleOpen}
           // value={age}
-          name="course"
+          name="course_id"
            onChange={e =>this.onChange(e)}
         >
           <MenuItem value="">
@@ -179,7 +179,7 @@ class Top extends Component {
                     id="datetime-local"
                     label="DeadLine"
                     type="datetime-local"
-                    defaultValue="2017-05-24T10:30"
+                    //defaultValue="2017-05-24T10:30"
                     className="form-control"
                     name="deadline"
                     onChange={e => this.onChange(e)}
@@ -190,13 +190,13 @@ class Top extends Component {
                 </div>
                 <div className="row">
                   <div className="form-group files col">
-                    <label>Upload Make File Here </label>
-                    <input type="file" ref={(ref) => { this.uploadInput = ref; }} name="make" className="form-control" onChange={e => this.onChangeFile(e)} multiple=""></input>
+                    <label>Upload Test Case </label>
+                    <input type="file" ref={(ref) => { this.uploadInput = ref; }} name="testCase" className="form-control" onChange={e => this.onChangeFile(e)} multiple=""></input>
                   </div>
-                  <div className="form-group files col">
+                  {/* <div className="form-group files col">
                     <label>Upload Tar File Here </label>
                     <input type="file" name="tar" className="form-control" onChange={e => this.onChangeFile(e)} multiple=""></input>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="form-group justify-content-center ">
 
