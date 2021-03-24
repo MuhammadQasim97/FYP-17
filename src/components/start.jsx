@@ -197,24 +197,7 @@
                </Link>
                </Grid>
              </Grid>
-             <Button
-               href="/student"
-               size="large"
-               className="m-4"
-               variant="contained"
-               color="secondary"
-             >
-               Student
-             </Button>
-             <Button
-               href="/submissions"
-               size="large"
-               className="m-4"
-               variant="contained"
-               color="primary"
-             >
-               Teacher
-             </Button>
+            
            </form>
          </div>
          <Box mt={5}>
