@@ -18,6 +18,7 @@ import SignUp from "./components/register";
 import { NavigateBefore } from "@material-ui/icons";
 import Nav from "./components/nav";
 import SubmitCourses from "./components/AddCourses";
+import AddCourses from "./components/AddCourses";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
             <Route path="/student">
               <Navbar></Navbar>
               <Home></Home>
+            </Route>
+            <Route path="/addCourse">
+              <Navbar />
+              <AddCourses />
             </Route>
             <Route path="/courses">
               <Navbar></Navbar>
