@@ -21,6 +21,9 @@
  import Container from '@material-ui/core/Container';
  import FormControl from '@material-ui/core/FormControl';
  import FormLabel from '@material-ui/core/FormLabel';
+ import { createBrowserHistory } from 'history';
+
+ const history = createBrowserHistory();
 
  function Copyright() {
    return (
@@ -58,7 +61,7 @@
    },
  }));
 
- export default function Login() {
+ export default function Login(props) {
    const classes = useStyles();
 
    const [type, setValue] = React.useState('female');
@@ -68,7 +71,9 @@
 
 
 
-   const [open, setOpen] = React.useState(true);
+   const [open, setOpen] = React.useState(false);
+   const [done, setDone] = React.useState(false);
+   const [user, setUser] = React.useState([]);
 
    const handleChange = (event) => {
      setValue(event.target.value);
@@ -89,7 +94,19 @@
          url: 'http://localhost:5000/user_login',
          data: formData,
          config: { headers: { 'Content-Type': 'multipart/form-data' } }
-       }).then(response => console.log(response))
+       }) .then((response) => {
+        if (response.status == 200) {
+          setUser(response.data.data[0][4]);
+          if(response.data.data[0][4]==0)
+          {
+          props.history.push('student')
+          }
+          else{
+            props.history.push('submissions')
+          }
+        }
+       
+      })
          .catch(errors => console.log(errors))
 
      }
@@ -98,7 +115,7 @@
 
    return (
 
-
+    
 
      <div className="">
        <div className="p-4">
