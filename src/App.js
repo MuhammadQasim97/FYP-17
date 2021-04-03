@@ -9,8 +9,6 @@ import Courses from "./components/pages/Courses";
 import Products from "./components/pages/Products";
 //import SignUp from "./components/pages/SignUp";
 import Assessments from "./components/assessments";
-import DataGridDemo from "./components/data";
-import DataData from "./components/Sdatadata";
 import Assessments_Submission from "./components/assessments_submission";
 import Start from "./components/start";
 import Top from "./components/top";

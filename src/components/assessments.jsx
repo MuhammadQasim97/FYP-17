@@ -14,56 +14,50 @@ import Footer from "./Footer";
 import { useState, useEffect } from "react";
 import { Card } from "@material-ui/core";
 
-// function ncard(val){
-//     console.log(val);
 
-// }
-
+//function for assesment and api call
 function Assessments() {
 
-  let [Data, setData] = useState();
-  let [flag, setFlag] = useState(false);
-
-  axios({
-    method: "get",
-    url: "http://127.0.0.1:5000/getassessments/1",
-    config: { headers: { "Content-Type": "multipart/form-data" } },
-  })
-    .then((response) => {setData(response.data.data);setFlag(true)})
-    .catch((errors) => console.log(errors));
-    
-console.log(Data);
-    if(flag)
-        {
-          return (
-           
-            
-              <div>
-    <h1 className="heading_Style" > List of assignments of current Course </h1>
-
-    { Data.map((val) => (
-     
-      <Cards
-        id={val[0]}
-        name={val[1]}
-        datetime={val[2]}
-      />
-
-    ))}
-    
-   
-
- 
-    </div>
-  );
-          }
-          else{
-              return(
-            <h1>Loading Data....</h1>
-            );
-          }
-}
-export default Assessments;
+    let [Data, setData] = useState();
+    let [flag, setFlag] = useState(false);
+  
+    axios({
+      method: "get",
+      url: "http://127.0.0.1:5000/getassessments/1",
+      config: { headers: { "Content-Type": "multipart/form-data" } },
+    })
+      .then((response) => {setData(response.data.data);setFlag(true)})
+      .catch((errors) => console.log(errors));
+      
+      //Console log file
+  console.log(Data);
+      if(flag)
+          {
+            return (
+             
+              
+                <div>
+      <h1 className="heading_Style" > List of assignments of current Course </h1>
+  
+      { Data.map((val) => (
+       
+        <Cards
+          id={val[0]}
+          name={val[1]}
+          datetime={val[2]}
+        />
+  
+      ))}
+      </div>
+    );
+            }
+            else{
+                return(
+              <h1>Loading Data....</h1>
+              );
+            }
+  }
+  export default Assessments;
 
 /*
 class Projects extends Component {
