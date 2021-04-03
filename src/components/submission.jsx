@@ -37,3 +37,4 @@ export default function ImgMediaCard(props) {
         </Card>
     );
 }
+
