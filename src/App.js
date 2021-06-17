@@ -17,6 +17,7 @@ import { NavigateBefore } from "@material-ui/icons";
 import Nav from "./components/nav";
 import SubmitCourses from "./components/AddCourses";
 import AddCourses from "./components/AddCourses";
+import Report from './components/report';
 
 function App() {
   return (
@@ -55,7 +56,7 @@ function App() {
               <Top></Top>
             </Route>
             <Route path="/register">
-              <Nav />
+             
               <SignUp />
             </Route>
             <Route
@@ -66,6 +67,14 @@ function App() {
               path="/assessments_submission/:id/:name/:date"
               component={Assessments_Submission}
             />
+            <Route
+            exact
+            path="/report/:id"
+            component={Report}
+            >
+              <Navbar></Navbar>
+              <Report />
+            </Route>
           </Route>
           {/* <Route path='/assessments_submission' render={(props) => <Assessments_Submission{...props} />} /> */}
         </Switch>
