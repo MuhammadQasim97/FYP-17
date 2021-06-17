@@ -73,7 +73,7 @@ export default function SignUp() {
 
 
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -97,7 +97,14 @@ export default function SignUp() {
         url: 'http://localhost:5000/user_register',
         data: formData,
         config: { headers: { 'Content-Type': 'multipart/form-data' } }
-      }).then(response => console.log(response))
+      }).then((response)=>{
+            if(response.status==200)
+            {
+              setText("Registered Successfully");
+              setSever("success");
+              setOpen(true);
+            }
+      })
         .catch(errors => console.log(errors))
 
     }
