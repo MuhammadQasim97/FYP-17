@@ -7,8 +7,44 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import BubbleChartSharpIcon from "@material-ui/icons/BubbleChartSharp";
 import Paper from "@material-ui/core/Paper";
 import CheckIcon from "@material-ui/icons/Check";
+import { Link } from "react-router-dom";
+import { BrowserRouter, Route } from 'react-router-dom';
+
 
 export default function DataGridDemo(props) {
+
+
+ 
+  function generateReport(event,params)
+  {
+
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      alert("YEAH");
+    } else {
+
+      alert("REPORT");
+      // let id = params.getValue("id");
+      // axios({
+      //   method: "get",
+      //   url: "http://localhost:5000/getsubmission/" + id,
+      //   config: { headers: { "Content-Type": "multipart/form-data" } },
+      // })
+      //   .then((response) => {
+      //     if (response.status == 200) {
+      //     }
+      //     console.log(response.status);
+      //   })
+      //   .catch((errors) => console.log(errors));
+    }
+
+  }
+
+
+
+
   function handleClick(event, params) {
     //props.setView();
     console.log(props);
@@ -53,8 +89,8 @@ export default function DataGridDemo(props) {
       flex: 1,
     },
     {
-      field: "date",
-      headerName: "Year",
+      field: "grade_button",
+      headerName: "Autograde",
       flex: 1,
       valueGetter: getID,
       renderCell: (params) => (
@@ -73,16 +109,18 @@ export default function DataGridDemo(props) {
       ),
     },
     {
-      field: "state",
-      headerName: "Status",
-
-      renderCell: (params) =>
-        props.view ? (
-          <CheckIcon color="success" />
-        ) : (
-          <CheckIcon color="success" />
-        ),
-      flex: 0,
+      field: "report",
+      headerName: "Report",
+      flex: 1,
+      valueGetter: getID,
+      renderCell: (params) => (
+        
+       <Link  className="btn btn-success"  to="/report/1">
+       Generate Report
+       </Link>
+         
+        
+      ),
     },
   ];
 
@@ -100,6 +138,7 @@ export default function DataGridDemo(props) {
         Marks: value[11],
         submitted_at: value[5],
         button: "GRADE",
+        button: "Report",
       });
     });
 
