@@ -37,7 +37,7 @@ export default function SimpleMenu(props) {
 
   function pageChange(event) {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      alert("FUCK")
+      alert("Pressed")
     }
     else {
       alert("as")
