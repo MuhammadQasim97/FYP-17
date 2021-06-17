@@ -72,6 +72,8 @@
 
 
    const [open, setOpen] = React.useState(false);
+   const [text, setText] = React.useState("Somehting");
+   const [msgType, setMsgType] = React.useState("success");
    const [done, setDone] = React.useState(false);
    const [user, setUser] = React.useState([]);
 
@@ -81,8 +83,8 @@
 
    const handleSubmit = (event) => {
      event.preventDefault();
-     setOpen(true);
     
+     setOpen(false);
        let formData = new FormData();
       
        formData.append('email', email);
@@ -96,7 +98,19 @@
          config: { headers: { 'Content-Type': 'multipart/form-data' } }
        }) .then((response) => {
         if (response.status == 200) {
-          setUser(response.data.data[0][4]);
+          console.log(response);
+          if( response.data.data== false)
+          {
+            setMsgType("error");
+            setText(<strong>Invalid User</strong>);
+            setOpen(true);
+            
+          }
+          else{
+            setUser(response.data.data[0][4]);
+            setMsgType("success");
+            setText("Welcome");
+            setOpen(true);
           if(response.data.data[0][4]==0)
           {
           props.history.push('student')
@@ -104,6 +118,9 @@
           else{
             props.history.push('submissions')
           }
+
+          }
+          
         }
        
       })
@@ -121,12 +138,13 @@
        <div className="p-4">
          <Collapse in={open}>
            <Alert
-            //  severity={sever}
+            severity={msgType}
              action={
                <IconButton
                  aria-label="close"
                  color="inherit"
                  size="small"
+                 
                  onClick={() => {
                    setOpen(false);
                  }}
@@ -135,7 +153,7 @@
                </IconButton>
              }
            >
-             {/* {text} */}
+             {text}
            </Alert>
          </Collapse>
 
