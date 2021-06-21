@@ -12,6 +12,7 @@ import Assessments from "./components/assessments";
 import Assessments_Submission from "./components/assessments_submission";
 import Start from "./components/start";
 import Top from "./components/top";
+import Student_Submission from "./components/Student_Submission";
 import SignUp from "./components/register";
 import { NavigateBefore } from "@material-ui/icons";
 import Nav from "./components/nav";
@@ -50,6 +51,10 @@ function App() {
             <Route path="/assessments">
               <Navbar></Navbar>
               <Assessments></Assessments>
+            </Route>
+            <Route path="/Student_Submission">
+              <Navbar></Navbar>
+              <Student_Submission></Student_Submission>
             </Route>
             <Route path="/submissions" component={Top}>
               <Nav></Nav>

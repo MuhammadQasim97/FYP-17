@@ -59,7 +59,15 @@ function Navbar() {
                 Assessments
               </Link>
             </li>
-           
+            <li className="nav-item">
+              <Link
+                to="/Student_Submission"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Student_Submission
+              </Link>
+            </li>
             <li>
               <Link
                 to="/sign-up"
