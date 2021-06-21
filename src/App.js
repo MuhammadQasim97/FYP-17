@@ -69,7 +69,7 @@ function App() {
             />
             <Route
             exact
-            path="/report/:id"
+            path="/report"
             component={Report}
             >
               <Navbar></Navbar>
