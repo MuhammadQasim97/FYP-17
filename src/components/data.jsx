@@ -115,7 +115,12 @@ export default function DataGridDemo(props) {
       valueGetter: getID,
       renderCell: (params) => (
         
-       <Link  className="btn btn-success"  to="/report/1">
+       <Link  className="btn btn-success" params='1'  to={
+         {
+           pathname:'/report',
+           state:params.getValue('id')
+         }
+       }>
        Generate Report
        </Link>
          
